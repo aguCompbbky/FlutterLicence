@@ -1,7 +1,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:licence/features/licenceAPI/bussiness/bloc/product_state.dart';
-import 'package:licence/features/licenceAPI/bussiness/usecase/product_%20manager_usecase.dart';
+import 'package:licence/features/licenceAPI/product/bussiness/bloc/product_state.dart';
+import 'package:licence/features/licenceAPI/product/bussiness/usecase/product_%20manager_usecase.dart';
 
 class ProductCubit extends Cubit<ProductState> {
   

@@ -1,8 +1,8 @@
 
-import 'package:licence/features/licenceAPI/bussiness/entity/product.dart';
-import 'package:licence/features/licenceAPI/bussiness/repository/product_repository.dart';
-import 'package:licence/features/licenceAPI/data/DTO_model/product_dto.dart';
-import 'package:licence/features/licenceAPI/data/data_source/product_remote_data_source.dart';
+import 'package:licence/features/licenceAPI/product/bussiness/entity/product.dart';
+import 'package:licence/features/licenceAPI/product/bussiness/repository/product_repository.dart';
+import 'package:licence/features/licenceAPI/product/data/DTO_model/product_dto.dart';
+import 'package:licence/features/licenceAPI/product/data/data_source/product_remote_data_source.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   ProductRemoteDataSource remote;

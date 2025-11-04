@@ -1,5 +1,5 @@
 
-import 'package:licence/features/licenceAPI/bussiness/entity/product.dart';
+import 'package:licence/features/licenceAPI/product/bussiness/entity/product.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'product_dto.g.dart';
 

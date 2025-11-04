@@ -1,5 +1,5 @@
-import 'package:licence/features/licenceAPI/bussiness/entity/product.dart';
-import 'package:licence/features/licenceAPI/data/DTO_model/product_dto.dart';
+import 'package:licence/features/licenceAPI/product/bussiness/entity/product.dart';
+import 'package:licence/features/licenceAPI/product/data/DTO_model/product_dto.dart';
 
 abstract class ProductRepository {
   Future<Product> getProductById(int productId);

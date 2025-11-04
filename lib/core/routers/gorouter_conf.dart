@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:licence/features/licenceAPI/presentation/pages/add_product_page.dart';
-import 'package:licence/features/licenceAPI/presentation/pages/product_manager_page.dart';
-import 'package:licence/features/licenceAPI/presentation/pages/update_product_page.dart';
+import 'package:licence/features/licenceAPI/product/presentation/pages/add_product_page.dart';
+import 'package:licence/features/licenceAPI/product/presentation/pages/product_manager_page.dart';
+import 'package:licence/features/licenceAPI/product/presentation/pages/update_product_page.dart';
 
 class GoRouterConf {
 

@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:licence/core/constants/text_constants.dart';
 import 'package:licence/core/extensions/string_extension.dart';
 import 'package:licence/core/widgets/app_title_text.dart';
-import 'package:licence/features/licenceAPI/bussiness/bloc/product_cubit.dart';
-import 'package:licence/features/licenceAPI/bussiness/bloc/product_state.dart';
+import 'package:licence/features/licenceAPI/product/bussiness/bloc/product_cubit.dart';
+import 'package:licence/features/licenceAPI/product/bussiness/bloc/product_state.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
