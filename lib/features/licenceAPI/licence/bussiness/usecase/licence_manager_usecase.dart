@@ -24,5 +24,5 @@ class LicenceManagerUsecase {
     bool isAktive,
   )async => await repo.updateLicence(id, LicenceDto(id: id, licenseName: licenseName, startDate: startDate, endDate: endDate, products: products, amountOfUser: amountOfUser, licensePrice: licensePrice, isAktive: isAktive));
 
-  
+  Future<void> deleteLicence(int id)async => await repo.deleteLicence(id);
 }

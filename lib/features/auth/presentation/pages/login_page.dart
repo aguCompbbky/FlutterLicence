@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:licence/core/constants/text_constants.dart';
 import 'package:licence/features/auth/bussiness/bloc/auth_cubit.dart';
 import 'package:licence/features/auth/bussiness/bloc/auth_state.dart';
@@ -38,8 +39,10 @@ class _LoginPageState extends State<LoginPage> {
                   builder: (context, state) {
 
                     return FilledButton(
-                      onPressed: () {
-                        context.read<AuthCubit>().login(emailController.text, passwordController.text);
+                      onPressed: () async{
+                        final bool success = await context.read<AuthCubit>().login(emailController.text, passwordController.text);
+                        if (success) context.goNamed('CustomerLicencesPage');
+                        else debugPrint("giriş başarısız");      
                       },
                       child: const Text(
                         TextConstants.login,
