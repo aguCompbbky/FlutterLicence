@@ -7,7 +7,7 @@ import 'package:licence/features/licenceAPI/product/data/DTO_model/product_dto.d
 /// CRUD işlemlerini burada topladım normalde ayrı ayrı olur ama kucuk diye
 class ProductManagerUsecase {
  
-  ProductRepository  repo;
+  final ProductRepository  repo;
 
   ProductManagerUsecase({required this.repo});
 
@@ -17,8 +17,8 @@ class ProductManagerUsecase {
 
     Future<void> deleteProductById(int productId) => repo.deleteProductById(productId);
 
-    Future<Product> addProduct({required String productName, required int productAmount}) => repo.addProduct(ProductDto(id: 0, productName: productName, productAmount: productAmount));
+    Future<Product> addProduct({required String productName, required int productAmount}) async => repo.addProduct(ProductDto(id: 0, productName: productName, productAmount: productAmount));
 
-    Future<Product> updateProduct({required int productId, required String productName, required int productAmount}) => repo.updateProduct(productId, ProductDto(id: productId, productName: productName, productAmount: productAmount));
+    Future<Product> updateProduct({required int productId, required String productName, required int productAmount}) async=> repo.updateProduct(productId, ProductDto(id: productId, productName: productName, productAmount: productAmount));
   
 }

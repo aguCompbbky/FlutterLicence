@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:licence/features/auth/presentation/pages/auth_page.dart';
+import 'package:licence/features/auth/presentation/pages/login_page.dart';
+import 'package:licence/features/auth/presentation/pages/register_page.dart';
 import 'package:licence/features/licenceAPI/product/presentation/pages/add_product_page.dart';
 import 'package:licence/features/licenceAPI/product/presentation/pages/product_manager_page.dart';
 import 'package:licence/features/licenceAPI/product/presentation/pages/update_product_page.dart';
@@ -14,9 +17,23 @@ class GoRouterConf {
         GoRoute(
           path: '/',
           builder: (BuildContext context, GoRouterState state) {
-            return const ProductManagerPage();
+            return const AuthPage();
           },
           routes: <RouteBase>[
+            GoRoute(
+              path: '/login',
+              name: 'LoginPage',
+              builder: (BuildContext context, GoRouterState state) {
+                return const LoginPage();
+              },
+            ),
+            GoRoute(
+              path: '/register',
+              name: 'RegisterPage',
+              builder: (BuildContext context, GoRouterState state) {
+                return const RegisterPage();
+              },
+            ),
             GoRoute(
               path: '/product_manager',
               name: 'ProductManagerPage',

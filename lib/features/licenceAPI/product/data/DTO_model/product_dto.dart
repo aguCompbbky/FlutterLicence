@@ -15,7 +15,13 @@ class ProductDto extends Product{
  
   Map<String, dynamic> toJson() => _$ProductDtoToJson(this);
 
-  
+  Product toEntity() { //lisanslar için kullandık normalde extends ile çözmüştük
+    return Product(
+      id: id,
+      productAmount: productAmount, 
+      productName: productName,
+    );
+  }
 }
 
 

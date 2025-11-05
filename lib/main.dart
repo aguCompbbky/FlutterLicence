@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:licence/client.dart';
-import 'package:licence/core/constants/network.dart';
+import 'package:licence/core/init/dependencies.dart';
 import 'package:licence/core/routers/gorouter_conf.dart';
 import 'package:licence/core/themes/app_theme.dart';
+import 'package:licence/features/auth/bussiness/bloc/auth_cubit.dart';
 import 'package:licence/features/licenceAPI/product/bussiness/bloc/product_cubit.dart';
-import 'package:licence/features/licenceAPI/product/bussiness/usecase/product_%20manager_usecase.dart';
-
-import 'package:licence/features/licenceAPI/product/data/data_source/product_remote_data_source.dart';
-import 'package:licence/features/licenceAPI/product/data/repositoryIMPL/product_repository_impl.dart';
-
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
-
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    Dependencies.init();
+  }
   @override
   Widget build(BuildContext context) {
-
-    final client = Client(Network.baseUrlEmulator); 
-    final productRemoteDataSource = ProductRemoteDataSource(client: client);
-    final productRepository = ProductRepositoryImpl(remote: productRemoteDataSource);
-    final productManagerUsecase = ProductManagerUsecase(repo: productRepository);
-
-
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (e)=>ProductCubit(productUsecase: productManagerUsecase))
+        BlocProvider(create: (e)=>ProductCubit(productUsecase: Dependencies.productManagerUsecase)),
+        BlocProvider(create: (e)=>AuthCubit(loginUseCase: Dependencies.loginUsecase, registerUsecase: Dependencies.registerUsecase))
       ],
       child: MaterialApp.router(
         routerConfig: GoRouterConf.configRoutes(context),
