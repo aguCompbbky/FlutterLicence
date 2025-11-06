@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/bloc/licence_state.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/usecase/customerslicence_usecase.dart';
@@ -86,6 +87,7 @@ class LicenceCubit extends Cubit<LicenceState> {
       final result = await customerslicenceUsecase.getLicensesOfCustomer();
       emit(LicenceLoadedState(result));
     } catch (e) {
+      debugPrint("${e.toString()} load hataa");
       emit(LicenceErrorState(e.toString()));
     }
   }

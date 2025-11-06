@@ -7,7 +7,7 @@ part of 'login_response_dto.dart';
 // **************************************************************************
 
 LoginResponseDto _$LoginResponseDtoFromJson(Map<String, dynamic> json) =>
-    LoginResponseDto(loginToken: json['loginToken'] as String);
+    LoginResponseDto(loginToken: json['token'] as String);
 
 Map<String, dynamic> _$LoginResponseDtoToJson(LoginResponseDto instance) =>
     <String, dynamic>{'loginToken': instance.loginToken};

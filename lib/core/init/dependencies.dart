@@ -1,5 +1,6 @@
 import 'package:licence/client.dart';
 import 'package:licence/core/constants/network.dart';
+import 'package:licence/features/auth/bussiness/repository/auth_repository.dart';
 import 'package:licence/features/auth/bussiness/usecase/login_usecase.dart';
 import 'package:licence/features/auth/bussiness/usecase/register_usecase.dart';
 import 'package:licence/features/auth/data/data_source/auth_remote_data_source.dart';
@@ -19,7 +20,7 @@ class Dependencies {
   static late final LicenceManagerUsecase licenceManagerUsecase;
   static late final CustomerslicenceUsecase customerslicenceUsecase;
 
-  static void init() {
+  static Future<void> init() async {
     final client = Client(Network.baseUrlEmulator);
 
     // Product 
@@ -29,7 +30,9 @@ class Dependencies {
 
     // Auth 
     final authRemoteDataSource = AuthRemoteDataSource(client: client);
-    final authRepository = AuthRepositoryImpl(remote: authRemoteDataSource);
+    final AuthRepository authRepository = await AuthRepositoryImpl.create(
+    remote: authRemoteDataSource
+);
     loginUsecase = LoginUsecase(repo: authRepository);
     registerUsecase = RegisterUsecase(repo: authRepository);
 
