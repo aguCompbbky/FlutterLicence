@@ -87,7 +87,7 @@ class LicenceCubit extends Cubit<LicenceState> {
       final result = await customerslicenceUsecase.getLicensesOfCustomer();
       emit(LicenceLoadedState(result));
     } catch (e) {
-      debugPrint("${e.toString()} load hataa");
+      debugPrint("${e} load hataa");
       emit(LicenceErrorState(e.toString()));
     }
   }

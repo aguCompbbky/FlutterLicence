@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:licence/features/auth/bussiness/repository/auth_repository.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/entity/licence.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/repository/licence_repository.dart';
@@ -23,6 +24,7 @@ class CustomerslicenceUsecase {
 
   Future<List<Licence>> getLicensesOfCustomer() async {
     final customerId = await authRepo.getCurrentCustomerId();
+    debugPrint("customerId: $customerId");
 
     final licenceList = await licenceRepo.getLicensesOfCustomer(customerId);
 

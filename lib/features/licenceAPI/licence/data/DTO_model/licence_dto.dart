@@ -31,7 +31,8 @@ class LicenceDto {
 
   @DateConverter()
   final DateTime endDate;
-
+  
+  @JsonKey(defaultValue: [])
   final List<ProductDto> products;
   final int amountOfUser;
   final double licensePrice;

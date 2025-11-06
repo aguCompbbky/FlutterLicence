@@ -13,6 +13,12 @@ class CustomerLicencesPage extends StatefulWidget {
 
 class _CustomerLicencesPageState extends State<CustomerLicencesPage> {
   @override
+  void initState() {
+    super.initState();
+      Future.microtask(() =>
+      context.read<LicenceCubit>().getLicensesOfCustomer());
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
@@ -21,7 +27,7 @@ class _CustomerLicencesPageState extends State<CustomerLicencesPage> {
           children: [
             BlocBuilder<LicenceCubit, LicenceState>(
               builder: (context, state) {
-                context.read<LicenceCubit>().getLicensesOfCustomer();
+                
                 print(state.toString()+"durum");
                 if (state is LicenceLoadingState) {
                   return const Center(child: CircularProgressIndicator());
@@ -29,7 +35,7 @@ class _CustomerLicencesPageState extends State<CustomerLicencesPage> {
                   if (state.licences.isEmpty) {
                     return const Center(
                       child: Text(
-                        "Müşteriye ait aktif veya süresi dolmuş lisans bulunmamaktadır.",
+                        "Müşteriye ait lisans bulunmamaktadır.",
                       ),
                     );
                   }

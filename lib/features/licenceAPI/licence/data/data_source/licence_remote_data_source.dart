@@ -1,4 +1,5 @@
 
+import 'package:flutter/widgets.dart';
 import 'package:licence/client.dart';
 
 class LicenceRemoteDataSource {
@@ -35,8 +36,22 @@ class LicenceRemoteDataSource {
   }
 
   Future<List<Map<String, dynamic>>> getLicensesOfCustomer (int customerId)async{
-    final resultList = await client.dio.get<Map<String, dynamic>>("$_basePathCustomer/get/$customerId/licenses");
-    return List<Map<String, dynamic>>.from(resultList as List);
+    final resultList = await client.dio.get("$_basePathCustomer/get/$customerId/licenses");
+    
+    debugPrint("Response tip: ${resultList.data.runtimeType}");
+    debugPrint("Response data: ${resultList.data}");
+      debugPrint('licences status: ${resultList.statusCode}');
+
+
+    final data = resultList.data;
+    if (data is List) {
+      // Apı direkt List<DtoLicence> dönüyo
+      return data.cast<Map<String, dynamic>>();
+    } else {
+      throw FormatException('Beklenmeyen response tipi ${data.runtimeType}');
+    }
+
+   // return List<Map<String, dynamic>>.from(resultList as List);
   }
 
   
