@@ -26,7 +26,7 @@ class _AddLicenceCustomerPageState extends State<AddLicenceCustomerPage> {
   String _fmt(DateTime d) =>
       '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
 
-  Future<void> _pickDate({required bool isStart}) async {
+  Future<void> _pickDate(bool isStart) async {
     // Single-date picker config
     final config = CalendarDatePicker2WithActionButtonsConfig(
       calendarType: CalendarDatePicker2Type.single,
@@ -87,39 +87,12 @@ class _AddLicenceCustomerPageState extends State<AddLicenceCustomerPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // START DATE FIELD
-              TextFormField(
-                controller: _startCtrl,
-                readOnly: true,
-                decoration: InputDecoration(
-                  labelText: 'Start Date',
-                  hintText: 'Select start date',
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.calendar_today),
-                    onPressed: () => _pickDate(isStart: true),
-                  ),
-                  border: const OutlineInputBorder(),
-                ),
-                onTap: () => _pickDate(isStart: true),
-              ),
+              _PickStartDateWidget(controller: _startCtrl, pickDate:()=> _pickDate(true),),
               const SizedBox(height: 16),
-              // END DATE FIELD
-              TextFormField(
-                controller: _endCtrl,
-                readOnly: true,
-                decoration: InputDecoration(
-                  labelText: 'End Date',
-                  hintText: 'Select end date',
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.calendar_today),
-                    onPressed: () => _pickDate(isStart: false),
-                  ),
-                  border: const OutlineInputBorder(),
-                ),
-                onTap: () => _pickDate(isStart: false),
-              ),
+              
+              _PickEndDateWidget(controller: _endCtrl,pickDate: ()=>_pickDate(true),),
               const SizedBox(height: 24),
-              // Simple preview row
+              
               if (_start != null || _end != null)
                 Text(
                   'Selected: ${_start != null ? _fmt(_start!) : '—'}  →  ${_end != null ? _fmt(_end!) : '—'}',
@@ -129,6 +102,61 @@ class _AddLicenceCustomerPageState extends State<AddLicenceCustomerPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _PickStartDateWidget extends StatelessWidget {
+  final TextEditingController controller;
+  final Future<void> Function() pickDate; 
+  const _PickStartDateWidget({
+    required this.controller, required this.pickDate,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    
+    return TextFormField(
+      controller: controller,
+      readOnly: true,
+      decoration: InputDecoration(
+        labelText: 'Start Date',
+        hintText: 'Select start date',
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.calendar_today),
+          onPressed:pickDate,
+        ),
+        border: const OutlineInputBorder(),
+      ),
+      onTap:pickDate,
+    );
+  }
+}
+
+
+class _PickEndDateWidget extends StatelessWidget {
+  final TextEditingController controller;
+  final Future<void> Function() pickDate; 
+  const _PickEndDateWidget({
+    required this.controller, required this.pickDate,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    
+    return TextFormField(
+      controller: controller,
+      readOnly: true,
+      decoration: InputDecoration(
+        labelText: 'End Date',
+        hintText: 'Select end date',
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.calendar_today),
+          onPressed:pickDate,
+        ),
+        border: const OutlineInputBorder(),
+      ),
+      onTap:pickDate,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:licence/core/extensions/string_extension.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/bloc/licence_cubit.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/bloc/licence_state.dart';
@@ -157,10 +158,8 @@ class _addButtonWidget extends StatelessWidget {
     return BlocBuilder<LicenceCubit, LicenceState>(
       builder: (context, state) {
         return FilledButton(
-          onPressed: () {
-            //route ile ekleme sayfasına gitmeliyiz
-          },
-          child: Text("data"),
+          onPressed: ()=>context.goNamed('AddLicenceCustomerPage'),
+          child: Text("Add Licence"),
         );
       },
     );

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:licence/features/auth/presentation/pages/auth_page.dart';
 import 'package:licence/features/auth/presentation/pages/login_page.dart';
 import 'package:licence/features/auth/presentation/pages/register_page.dart';
+import 'package:licence/features/licenceAPI/licence/presentation/pages/add_licence_customer_page.dart';
 import 'package:licence/features/licenceAPI/licence/presentation/pages/customer_licences_page.dart';
 import 'package:licence/features/licenceAPI/product/presentation/pages/add_product_page.dart';
 import 'package:licence/features/licenceAPI/product/presentation/pages/product_manager_page.dart';
@@ -40,6 +41,13 @@ class GoRouterConf {
               name: 'CustomerLicencesPage',
               builder: (BuildContext context, GoRouterState state) {
                 return const CustomerLicencesPage();
+              },
+            ),
+            GoRoute(
+              path: '/login/customer_licences_page/add_licence_customer_page',
+              name: 'AddLicenceCustomerPage',
+              builder: (BuildContext context, GoRouterState state) {
+                return const AddLicenceCustomerPage();
               },
             ),
             
