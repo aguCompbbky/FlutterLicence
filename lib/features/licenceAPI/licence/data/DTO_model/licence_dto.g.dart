@@ -11,14 +11,14 @@ LicenceDto _$LicenceDtoFromJson(Map<String, dynamic> json) => LicenceDto(
   licenseName: json['licenseName'] as String,
   startDate: const DateConverter().fromJson(json['startDate'] as String),
   endDate: const DateConverter().fromJson(json['endDate'] as String),
+  licensePrice: (json['licensePrice'] as num).toDouble(),
   products:
-      (json['products'] as List<dynamic>?)
+      (json['productList'] as List<dynamic>?)
           ?.map((e) => ProductDto.fromJson(e as Map<String, dynamic>))
           .toList() ??
       [],
-  amountOfUser: (json['amountOfUser'] as num).toInt(),
-  licensePrice: (json['licensePrice'] as num).toDouble(),
-  isAktive: json['isAktive'] as bool,
+  amountOfUser: (json['amountOfUser'] as num).toInt(),  
+  isAktive: json['aktive'] as bool,
 );
 
 Map<String, dynamic> _$LicenceDtoToJson(LicenceDto instance) =>
@@ -27,8 +27,9 @@ Map<String, dynamic> _$LicenceDtoToJson(LicenceDto instance) =>
       'licenseName': instance.licenseName,
       'startDate': const DateConverter().toJson(instance.startDate),
       'endDate': const DateConverter().toJson(instance.endDate),
-      'products': instance.products,
-      'amountOfUser': instance.amountOfUser,
       'licensePrice': instance.licensePrice,
-      'isAktive': instance.isAktive,
+      'productList': instance.products,
+      'amountOfUser': instance.amountOfUser,
+      
+      'aktive': instance.isAktive,
     };

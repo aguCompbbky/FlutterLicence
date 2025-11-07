@@ -39,69 +39,71 @@ class _CustomerLicencesPageState extends State<CustomerLicencesPage> {
                       ),
                     );
                   }
-                  return ListView.builder(
-                    // ListView'ı Card'ları göstermek için kullanıyoruz
-                    itemCount: state.licences.length,
-                    itemBuilder: (context, index) {
-                      final license = state.licences[index];
-
-                      return Card(
-                        elevation: 4,
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 6,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                license.licenseName,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const Divider(),
-
-                              _buildInfoRow(
-                                icon: Icons.people,
-                                label: "Kullanıcı Sayısı:",
-                                value: "${license.amountOfUser} Kişi",
-                              ),
-
-                              _buildInfoRow(
-                                icon: Icons.attach_money,
-                                label: "Fiyat:",
-                                value:
-                                    '${license.licensePrice.toStringAsFixed(2)} ₺',
-                              ),
-
-                              _buildInfoRow(
-                                icon: Icons.calendar_today,
-                                label: "Süre:",
-                                value:
-                                    '${license.startDate} - ${license.endDate}',
-                              ),
-
-                              _buildInfoRow(
-                                icon: license.isAktive
-                                    ? Icons.check_circle
-                                    : Icons.cancel,
-                                label: "Durum:",
-                                value: license.isAktive
-                                    ? "Aktif"
-                                    : "Süresi Dolmuş",
-                                color: license.isAktive
-                                    ? Colors.green
-                                    : Colors.red,
-                              ),
-                            ],
+                  return Expanded(
+                    child: ListView.builder(
+                      // ListView'ı Card'ları göstermek için kullanıyoruz
+                      itemCount: state.licences.length,
+                      itemBuilder: (context, index) {
+                        final license = state.licences[index];
+                    
+                        return Card(
+                          elevation: 4,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 6,
                           ),
-                        ),
-                      );
-                    },
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  license.licenseName,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const Divider(),
+                    
+                                _buildInfoRow(
+                                  icon: Icons.people,
+                                  label: "Kullanıcı Sayısı:",
+                                  value: "${license.amountOfUser} Kişi",
+                                ),
+                    
+                                _buildInfoRow(
+                                  icon: Icons.attach_money,
+                                  label: "Fiyat:",
+                                  value:
+                                      '${license.licensePrice.toStringAsFixed(2)} ₺',
+                                ),
+                    
+                                _buildInfoRow(
+                                  icon: Icons.calendar_today,
+                                  label: "Süre:",
+                                  value:
+                                      '${license.startDate} - ${license.endDate}',
+                                ),
+                    
+                                _buildInfoRow(
+                                  icon: license.isAktive
+                                      ? Icons.check_circle
+                                      : Icons.cancel,
+                                  label: "Durum:",
+                                  value: license.isAktive
+                                      ? "Aktif"
+                                      : "Süresi Dolmuş",
+                                  color: license.isAktive
+                                      ? Colors.green
+                                      : Colors.red,
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   );
                 }
                 else if(state is LicenceErrorState){

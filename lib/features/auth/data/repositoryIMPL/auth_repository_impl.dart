@@ -29,6 +29,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> _loadToken() async {
   final prefs = await SharedPreferences.getInstance();
   _currentToken = prefs.getString('jwt_token'); // tokenı cacheden getir
+  debugPrint("$_currentToken loadTokenden gellen token");
 }
 
   @override
