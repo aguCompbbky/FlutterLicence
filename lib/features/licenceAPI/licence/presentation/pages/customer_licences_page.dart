@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:licence/core/constants/text_constants.dart';
 import 'package:licence/core/extensions/string_extension.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/bloc/licence_cubit.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/bloc/licence_state.dart';
@@ -149,9 +150,6 @@ class _CustomerLicencesPageState extends State<CustomerLicencesPage> {
 }
 
 class _addButtonWidget extends StatelessWidget {
-  const _addButtonWidget({
-    super.key,
-  });
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +157,7 @@ class _addButtonWidget extends StatelessWidget {
       builder: (context, state) {
         return FilledButton(
           onPressed: ()=>context.goNamed('AddLicenceCustomerPage'),
-          child: Text("Add Licence"),
+          child: const Text(TextConstants.add),
         );
       },
     );

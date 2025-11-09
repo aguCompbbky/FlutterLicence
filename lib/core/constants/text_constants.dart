@@ -21,6 +21,12 @@ class TextConstants {
   static const String ProductName = "Product Name";
   static const String ProductAmount = "Product Amount";
 
+  static const String addLicencePickDate = 'Pick Start & End Dates';
+  static const String addLicenceStartDate = 'Start Date';
+  static const String addLicenceEndDate = 'End Date';
+  static const String addLicenceAmountOfUser = 'Amount of User';
+  static const String addLicenceLicencePrice = 'Licence Prize';
+
   static const String update = "Update";
   static const String delete = "Delete";
   static const String cancel = "Cancel";

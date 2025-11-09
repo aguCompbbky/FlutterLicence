@@ -46,14 +46,14 @@ class LicenceCubit extends Cubit<LicenceState> {
     String licenseName,
     DateTime startDate,
     DateTime endDate,
-    List<ProductDto> products,
-    int amountOfUser,
     double licensePrice,
+    List<int> products,
+    int amountOfUser,
     bool isAktive,
   ) async {
     try {
       emit(LicenceLoadingState());
-      final result = await licenceUsecase.updateLicence(id, licenseName, startDate, endDate,  products, amountOfUser, licensePrice, isAktive);
+      final result = await licenceUsecase.updateLicence(id, licenseName, startDate, endDate, licensePrice,  products, amountOfUser,  isAktive);
       emit(LicenceAddedState(result));
     } catch (e) {     
       emit(LicenceErrorState(e.toString()));
@@ -66,14 +66,14 @@ class LicenceCubit extends Cubit<LicenceState> {
    String licenseName,
    DateTime startDate,
    DateTime endDate,
-   List<ProductDto> products,
-   int amountOfUser,
    double licensePrice,
+   List<int> products,
+   int amountOfUser,
    bool isAktive,
    )async{
     try {
       emit(LicenceLoadingState());
-      final result = await customerslicenceUsecase.addLicenseToCustomer(LicenceDto(id: id, licenseName: licenseName, startDate: startDate, endDate: endDate, products: products, amountOfUser: amountOfUser, licensePrice: licensePrice, isAktive: isAktive));
+      final result = await customerslicenceUsecase.addLicenseToCustomer(LicenceDto(id: id, licenseName: licenseName, startDate: startDate, endDate: endDate, licensePrice: licensePrice, products: products, amountOfUser: amountOfUser,  isAktive: isAktive));
       emit(LicenceAddedState(result));
     } catch (e) {
       emit(LicenceErrorState(e.toString()));

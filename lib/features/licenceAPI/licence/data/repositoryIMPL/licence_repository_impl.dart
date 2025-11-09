@@ -40,7 +40,7 @@ class LicenceRepositoryImpl implements LicenceRepository {
   @override
   Future<List<Licence>> getLicensesOfCustomer(int customerId) async {
     final resultList  = await remote.getLicensesOfCustomer(customerId);
-    final licenceList = resultList.map((e)=> LicenceDto.fromJson(e).toEntity()).toList();//! burada pataladı
+    final licenceList = resultList.map((e)=> LicenceDto.fromJson(e).toEntity()).toList();
     return licenceList;
   }
 

@@ -16,6 +16,7 @@ class CustomerslicenceUsecase {
     
 
     final customerId = await authRepo.getCurrentCustomerId();
+    debugPrint("customerID ekleme işleminde $customerId");
 
     final addedLicence = await licenceRepo.addLicenseToCustomer(customerId, licence);
 

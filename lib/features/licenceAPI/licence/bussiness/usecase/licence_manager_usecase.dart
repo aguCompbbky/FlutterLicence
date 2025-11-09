@@ -1,7 +1,6 @@
 import 'package:licence/features/licenceAPI/licence/bussiness/entity/licence.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/repository/licence_repository.dart';
 import 'package:licence/features/licenceAPI/licence/data/DTO_model/licence_dto.dart';
-import 'package:licence/features/licenceAPI/product/data/DTO_model/product_dto.dart';
 
 class LicenceManagerUsecase {
   LicenceManagerUsecase({required this.repo});
@@ -18,9 +17,9 @@ class LicenceManagerUsecase {
     String licenseName,
     DateTime startDate,
     DateTime endDate,
-    List<ProductDto> products,
-    int amountOfUser,
     double licensePrice,
+    List<int> products,
+    int amountOfUser,
     bool isAktive,
   )async => await repo.updateLicence(id, LicenceDto(id: id, licenseName: licenseName, startDate: startDate, endDate: endDate, products: products, amountOfUser: amountOfUser, licensePrice: licensePrice, isAktive: isAktive));
 
