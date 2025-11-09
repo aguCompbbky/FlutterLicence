@@ -18,9 +18,9 @@ class AddLicenceCustomerPage extends StatefulWidget {
 class _AddLicenceCustomerPageState extends State<AddLicenceCustomerPage> {
   final _startCtrl = TextEditingController();
   final _endCtrl = TextEditingController();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _amountOfUserController = TextEditingController();
-  final TextEditingController _licensePriceController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController(text: "cc");
+  final TextEditingController _amountOfUserController = TextEditingController(text: "44");
+  final TextEditingController _licensePriceController = TextEditingController(text: "34");
 
   DateTime? _start;
   DateTime? _end;
@@ -138,7 +138,7 @@ class _AddLicenceCustomerPageState extends State<AddLicenceCustomerPage> {
               FilledButton(
                 onPressed: () =>
                     context.read<LicenceCubit>().addLicenseToCustomer(
-                      0,
+                      9,
                       _nameController.text,
                       _start!,
                       _end!,

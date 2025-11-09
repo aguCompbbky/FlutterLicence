@@ -73,7 +73,8 @@ class LicenceCubit extends Cubit<LicenceState> {
    )async{
     try {
       emit(LicenceLoadingState());
-      final result = await customerslicenceUsecase.addLicenseToCustomer(LicenceDto(id: id, licenseName: licenseName, startDate: startDate, endDate: endDate, licensePrice: licensePrice, products: products, amountOfUser: amountOfUser,  isAktive: isAktive));
+      debugPrint("id :<<$id");
+      final result = await customerslicenceUsecase.addLicenseToCustomer(LicenceDto(id: 9, licenseName: licenseName, startDate: startDate, endDate: endDate, licensePrice: licensePrice, productIds: products, amountOfUser: amountOfUser,  isAktive: isAktive));
       emit(LicenceAddedState(result));
     } catch (e) {
       emit(LicenceErrorState(e.toString()));

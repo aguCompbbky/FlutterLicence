@@ -20,9 +20,9 @@ class DateConverter implements JsonConverter<DateTime, String> {
 
 @JsonSerializable()
 class LicenceDto {
-  LicenceDto({required this.id, required this.licenseName, required this.startDate, required this.endDate, required this.licensePrice, required this.products, required this.amountOfUser,  required this.isAktive});
+  LicenceDto({required this.id, required this.licenseName, required this.startDate, required this.endDate, required this.licensePrice, required this.productIds, required this.amountOfUser,  required this.isAktive});
 
-  
+  @JsonKey(includeIfNull: false)
   final int id;
   final String licenseName;
 
@@ -34,8 +34,8 @@ class LicenceDto {
 
   final double licensePrice;
   
-  @JsonKey(defaultValue: [],name: "productList")
-  final List<int> products;
+  @JsonKey(defaultValue: [],name: "productIds")
+  final List<int> productIds;
   final int amountOfUser;
   @JsonKey(name: "aktive")
   final bool isAktive;
@@ -45,15 +45,14 @@ class LicenceDto {
 
   Licence toEntity() {
     return Licence(
-      id: id,
+      id: id ?? 0,
       licenseName: licenseName,
       startDate: startDate,
       endDate: endDate,
-      // ProductDto listesini Product Entity listesine çevirin
-      products: products,
+      products: productIds,
       amountOfUser: amountOfUser,
       licensePrice: licensePrice,
-      isAktive: isAktive,
+      isAktive: true,
     );
   }
   
