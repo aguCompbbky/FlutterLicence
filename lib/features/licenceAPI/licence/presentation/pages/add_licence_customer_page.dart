@@ -3,6 +3,7 @@ import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:licence/core/constants/text_constants.dart';
 import 'package:licence/core/extensions/string_extension.dart';
@@ -97,7 +98,7 @@ class _AddLicenceCustomerPageState extends State<AddLicenceCustomerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(TextConstants.addLicencePickDate)),
+      appBar: AppBar(title: IconButton(onPressed: ()=>context.goNamed('CustomerLicencesPage'), icon:const Icon(Icons.arrow_back_rounded),),automaticallyImplyLeading:false),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16),

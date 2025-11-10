@@ -21,7 +21,15 @@ class GoRouterConf {
           builder: (BuildContext context, GoRouterState state) {
             return const AuthPage();
           },
-          routes: <RouteBase>[
+          routes: <RouteBase>[  
+            GoRoute(
+              path: '/auth_page',
+              name: 'AuthPage',
+              builder: (BuildContext context, GoRouterState state) {
+                return const AuthPage();
+              },
+            ),
+
             GoRoute(
               path: '/login',
               name: 'LoginPage',

@@ -13,7 +13,9 @@ class LoginUsecase {
 
 
 
- 
+  void logOut(){
+    repo.logOut();
+  }
 
 
 }

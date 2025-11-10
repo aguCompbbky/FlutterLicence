@@ -47,6 +47,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('jwt_token', account.loginToken);
+
+    if (_currentToken == null) {
+      _loadToken();
+    }
   
     return account;
   }
@@ -82,11 +86,16 @@ class AuthRepositoryImpl implements AuthRepository {
        return int.parse(decodedToken['sub'] as String); // id
       
     } catch (e) {
-      //_currentToken = null; 
+      _currentToken = null; 
       
       throw Exception("Token çözülemedi AuthRepositoryImpl-57 .${e.toString()}");
     }
     
 
   }
+
+  void logOut(){
+    _currentToken = null;
+  }
+
 }

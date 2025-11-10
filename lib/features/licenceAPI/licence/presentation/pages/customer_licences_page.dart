@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:licence/core/constants/text_constants.dart';
 import 'package:licence/core/extensions/string_extension.dart';
+import 'package:licence/features/auth/bussiness/bloc/auth_cubit.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/bloc/licence_cubit.dart';
 import 'package:licence/features/licenceAPI/licence/bussiness/bloc/licence_state.dart';
 
@@ -20,10 +21,15 @@ class _CustomerLicencesPageState extends State<CustomerLicencesPage> {
       Future.microtask(() =>
       context.read<LicenceCubit>().getLicensesOfCustomer());
   }
+  void backArrow(BuildContext context){
+    context.read<AuthCubit>().logOut();
+    context.goNamed('AuthPage');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: IconButton(onPressed: ()=>backArrow(context), icon:const Icon(Icons.arrow_back_rounded),),automaticallyImplyLeading:false),
       body: Center(
         child: Column(
           children: [
@@ -85,7 +91,7 @@ class _CustomerLicencesPageState extends State<CustomerLicencesPage> {
                                   icon: Icons.calendar_today,
                                   label: "Süre:",
                                   value:
-                                      '${license.startDate} - ${license.endDate}',
+                                      '${license.startDate} \n ${license.endDate}',
                                 ),
                     
                                 _buildInfoRow(
@@ -130,20 +136,22 @@ class _CustomerLicencesPageState extends State<CustomerLicencesPage> {
   }) {
     return Padding(
       padding: const EdgeInsets.only(top: 4.0),
-      child: Row(
-        children: [
-          Icon(icon, size: 16, color: color),
-          const SizedBox(width: 8),
-          Text(
-            label,
-            style: const TextStyle(fontWeight: FontWeight.w600),
-          ),
-          const Spacer(),
-          Text(
-            value,
-            style: TextStyle(color: color, fontWeight: FontWeight.bold),
-          ),
-        ],
+      child: Expanded(
+        child: Row(
+          children: [
+            Icon(icon, size: 16, color: color),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: const TextStyle(fontWeight: FontWeight.w600),
+            ),
+            const Spacer(),
+            Text(
+              value,
+              style: TextStyle(color: color, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
     );
   }

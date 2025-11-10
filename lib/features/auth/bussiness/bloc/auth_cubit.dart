@@ -37,7 +37,9 @@ class AuthCubit extends Cubit<AuthState> {
       }
     }
 
-
+    void logOut(){
+      loginUseCase.logOut();
+    }
 
 
 }
